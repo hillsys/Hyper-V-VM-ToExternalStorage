@@ -170,7 +170,7 @@ if($vmList[$userSelection].State -eq "Off"){
                         New-Item $externalPath -ItemType directory
 
                         # Get all child objects of vm directory and copy all files to external drive
-                        Get-ChildItem -Recurse $vmDirectory | ForEach-Object {
+                        Get-ChildItem -Recurse -File $vmDirectory | ForEach-Object {
                             Copy-Item $_.FullName -Destination ($externalPath + "\" + $_.Name) -Force
                         }
 
